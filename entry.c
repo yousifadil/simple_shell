@@ -1,11 +1,9 @@
 #include "shell.h"
 
 /**
- *
  * main - entry point
  *
- * Always retun 0 (success)
- *
+ * Return: 0 - success.
  */
 
 int main(void)
@@ -15,12 +13,12 @@ int main(void)
 	const char *file;
 
 
-	while (true) {
+	while (true)
+	{
 		show_prompt();
 		check_commands(command, sizeof(command));
 		exe_commands(command, args);
 		execvp_in_path(file, args);
 	}
-	
-	return 0;
+	return (0);
 }
