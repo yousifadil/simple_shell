@@ -1,8 +1,6 @@
 #include "shell.h"
 
-void handle_cd(char *args[]);
 void execute_command(const char *command, char *args[]);
-
 void exe_commands(const char *unused_command, char *args[])
 {
 	pid_t pid = fork();
@@ -10,7 +8,8 @@ void exe_commands(const char *unused_command, char *args[])
 
 	if (args[0] != NULL && strcmp(args[0], "exit") == 0)
 	{
-		printf("Exiting shell.\n");
+		const char exitMessage[] = "Exiting shell.\n";
+		write(1, exitMessage, sizeof(exitMessage) - 1);
 		exit(EXIT_SUCCESS);
 	}
 	if (pid == -1)
@@ -23,6 +22,7 @@ void exe_commands(const char *unused_command, char *args[])
 		/* Child process */
 		handle_cd(args);
 		execute_command(args[0], args);
+		_exit(EXIT_SUCCESS);
 	}
 	else
 	{
@@ -41,4 +41,5 @@ void exe_commands(const char *unused_command, char *args[])
 			}
 		}
 	}
+	wait(NULL);
 }

@@ -10,10 +10,10 @@ int main(void)
 {
 	char command[128];
 	char *args[128];
-	int argnum = 0;
 
 	while (true)
 	{
+		int argnum = 0;
 		char *token = strtok(command, " ");
 		show_prompt();
 		check_commands(command, sizeof(command));

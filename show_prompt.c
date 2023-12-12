@@ -6,5 +6,6 @@
 
 void show_prompt(void)
 {
-	printf("$ ");
+	const char prompt[] = "$ ";
+	write(1, prompt, sizeof(prompt) - 1);
 }

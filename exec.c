@@ -9,6 +9,7 @@ void execute_command(const char *command, char *args[])
 	if (strcmp(command,"env") == 0)
 	{
 		char **env = environ;
+
 		while (*env != NULL)
 		{
 			write(STDOUT_FILENO, *env, strlen(*env));
@@ -37,6 +38,7 @@ void execute_command(const char *command, char *args[])
 	while (token != NULL)
 	{
 		char *command_path = malloc(strlen(token) + strlen(command) + 2);
+
 		if (command_path == NULL)
 		{
 			perror("malloc error");
