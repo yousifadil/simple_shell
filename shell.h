@@ -15,7 +15,6 @@ extern char **environ;
 void show_prompt(void);
 void check_commands(char *command, size_t size);
 void exe_commands(const char *command, char *args[]);
-void execvp_in_path(const char *file, char *args[]);
 void handle_cd(char *args[]);
 
 

@@ -8,27 +8,27 @@
 
 int main(void)
 {
-    char command[128];
-    char *args[128];
-    int argnum = 0;
-    char *token = strtok(command, " ");
+	char command[128];
+	char *args[128];
+	int argnum = 0;
 
-    while (true)
-    {
-        show_prompt();
-        check_commands(command, sizeof(command));
+	while (true)
+	{
+		char *token = strtok(command, " ");
+		show_prompt();
+		check_commands(command, sizeof(command));
 
-        /* Tokenizing : */
-        while (token != NULL)
-        {
-            args[argnum++] = token;
-            token = strtok(NULL, " ");
-        }
-        args[argnum] = NULL;
+		/* Tokenizing : */
+		while (token != NULL)
+		{
+			args[argnum++] = token;
+			token = strtok(NULL, " ");
+		}
+		args[argnum] = NULL;
 
-        /* Exctuting commands : */
-        exe_commands(args[0], args);
-    }
+		/* Exctuting commands : */
+		exe_commands(args[0], args);
+	}
 
-    return 0;
+	return 0;
 }
