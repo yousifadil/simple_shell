@@ -8,17 +8,27 @@
 
 int main(void)
 {
-	char command[128];
-	char *args[128];
-	const char *file;
+    char command[128];
+    char *args[128];
+    int argnum = 0;
+    char *token = strtok(command, " ");
 
+    while (true)
+    {
+        show_prompt();
+        check_commands(command, sizeof(command));
 
-	while (true)
-	{
-		show_prompt();
-		check_commands(command, sizeof(command));
-		exe_commands(command, args);
-		execvp_in_path(file, args);
-	}
-	return (0);
+        /* Tokenizing : */
+        while (token != NULL)
+        {
+            args[argnum++] = token;
+            token = strtok(NULL, " ");
+        }
+        args[argnum] = NULL;
+
+        /* Exctuting commands : */
+        exe_commands(args[0], args);
+    }
+
+    return 0;
 }
