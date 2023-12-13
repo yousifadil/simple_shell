@@ -8,5 +8,5 @@ void show_prompt(void)
 {
 	const char prompt[] = "$ ";
 
-        write(1, prompt, sizeof(prompt) - 1);
+	write(1, prompt, sizeof(prompt) - 1);
 }
