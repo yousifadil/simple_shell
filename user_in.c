@@ -14,7 +14,9 @@ void check_commands(char *command, size_t size)
 	{
 		if (feof(stdin))
 		{
-			printf("\n");
+			const char newln[] = "\n";
+
+			write(1, newln, sizeof(newln) - 1);
 			exit(EXIT_SUCCESS);
 		}
 		else

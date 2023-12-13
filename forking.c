@@ -19,7 +19,7 @@ void exe_commands(const char *unused_command, char *args[])
 		const char exitMessage[] = "Exiting shell.\n";
 
 		write(1, exitMessage, sizeof(exitMessage) - 1);
-		exit(EXIT_SUCCESS);
+		_exit(EXIT_SUCCESS);
 	}
 	if (pid == -1)
 	{
